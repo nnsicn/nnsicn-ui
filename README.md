@@ -51,8 +51,3 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 ├── favicon.ico                // favicon图标
 ├── index.html                 // html模板
 └── package.json               // package.json
-
-作者：花裤衩
-链接：https://juejin.cn/post/6844903476661583880
-来源：稀土掘金
-著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
