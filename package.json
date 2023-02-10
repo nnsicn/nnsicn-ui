@@ -9,7 +9,11 @@
   },
   "dependencies": {
     "core-js": "^3.8.3",
-    "vue": "^2.6.14"
+    "vue": "^2.6.14",
+    "axios": "^0.21.1",
+    "vuex": "3.6.0",
+    "vue-router": "3.4.9",
+    "element-ui": "2.15.7"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
