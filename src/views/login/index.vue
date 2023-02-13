@@ -27,7 +27,11 @@ export default {
     },
     methods:{
       handleLogin(){
-        this.$store.dispatch("")
+        this.$store.dispatch("user/login",this.loginForm).then(res=>{
+          this.$router.push('/')
+        }).catch(err => {
+  this.$message.error(err); //登录失败提示错误
+});
       }
     }
 }
