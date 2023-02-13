@@ -7,7 +7,7 @@ const service = axios.create({
   });
 
 //   请求拦截器
-  axios.interceptors.request.use(config=>{
+service.interceptors.request.use(config=>{
     console.log(config);
     return config
   },error=>{
@@ -16,7 +16,7 @@ const service = axios.create({
   })
 
 //   响应拦截器
-axios.interceptors.response.use(res=>{
+service.interceptors.response.use(res=>{
     console.log(res);
     return res;
 },error=>{
