@@ -1,6 +1,8 @@
 import { login } from "@/api/login/index";
+import {setToken} from "@/utils/token"
 const state = {
-    token:""
+    token:"",
+    roles: []
 }
 
 const mutations = {
@@ -20,6 +22,7 @@ const actions = {
             // 调用接口,获取token,有token就resolve并存储cookie及提交commit,否则reject
             login({name,password}).then(res=>{
                 commit("SET_TOKEN",res.token)
+                setToken(res.token)
                 resolve()
             }).catch(err=>{
                 console.log(err.message);

@@ -5,6 +5,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import "@/style/index.scss"
 
 import App from './App.vue'
+import './permission'
 
 import store from './store'
 import router from './router'
