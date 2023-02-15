@@ -1,25 +1,26 @@
 import axios from "axios";
 // 创建axios实例
 const service = axios.create({
-    baseURL: 'nnsicn',
+    baseURL: '/nnsicn',
     timeout: 10000,
     // headers: {'X-Custom-Header': 'foobar'}
   });
 
 //   请求拦截器
 service.interceptors.request.use(config=>{
-    console.log(config);
     return config
   },error=>{
-    console.log(error);
     return Promise.reject(error);
   })
 
 //   响应拦截器
-service.interceptors.response.use(res=>{
-    console.log(res);
+service.interceptors.response.use(result=>{
+    const res = result.data;
+    if(res.status==500){
+      return Promise.reject(res);
+    }
     return res;
 },error=>{
-    console.log(error);
     return Promise.reject(error);
 })
+export default service

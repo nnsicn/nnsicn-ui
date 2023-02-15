@@ -13,5 +13,13 @@ module.exports = defineConfig({
   devServer:{//https://webpack.docschina.org/configuration/dev-server/#devserverport
     port:"1010",//端口号
     open: true,//告诉 dev-server 在服务器已经启动后打开浏览器。设置其为 true 以打开你的默认浏览器。
+    proxy:{
+      '/nnsicn':{
+        target:'http://127.0.0.1:5050',
+        pathRewrite:{
+          "^/nnsicn":""
+        }
+      }
+    }
   },
 })
