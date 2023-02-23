@@ -1,4 +1,5 @@
 import { login } from "@/api/login/index";
+import { getInfo } from "@/api/user/index";
 import {setToken} from "@/utils/token"
 const state = {
     token:"",
@@ -27,6 +28,11 @@ const actions = {
             }).catch(err=>{
                 console.log(err.message);
             })
+        })
+    },
+    getInfo({commit}){
+        getInfo().then(res=>{
+            
         })
     }
 }
