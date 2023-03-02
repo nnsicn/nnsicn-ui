@@ -9,6 +9,11 @@ export const constantRoutes = [
         component: () => import('@/views/login/index'),
         // hidden: true
     },
+    {
+        path: '/codemirror',
+        component: () => import('@/views/CodeMirror/index'),
+        // hidden: true
+    },
 ]
 
 const createRouter = () => new Router({
