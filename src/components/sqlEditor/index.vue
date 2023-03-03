@@ -30,23 +30,35 @@ export default {
       codeMirror: null,
     };
   },
-  watch:{
-    "options.mode":{
-      handler(n){
-        if(this.codeMirror){
-          this.codeMirror.setOption("mode",n)
+  watch: {
+    "options.mode": {
+      handler(n) {
+        if (this.codeMirror) {
+          this.codeMirror.setOption("mode", n);
         }
-      }
-    }
+      },
+    },
+    value: {
+      handler(n) {
+        if (this.codeMirror) {
+          let { ch, line } = this.codeMirror.getCursor();
+          this.codeMirror.setValue(n);
+          this.codeMirror.setCursor(line, ch);
+        }
+      },
+    },
+  },
+  methods: {
+    runJS() {},
   },
   mounted() {
     this.codeMirror = new CodeMirror(this.$refs.editor, {
       ...this.options,
       value: this.value,
     });
-    console.log(this.codeMirror);
     this.codeMirror.on("change", (cm) => {
       this.$emit("input", this.codeMirror.getValue());
+      console.log(cm.getValue().at(-1));
       if (
         cm.getValue().at(-1) != ";" &&
         cm.getValue().at(-1) != " " &&
@@ -56,7 +68,7 @@ export default {
           completeSingle: false,
         });
       }
-      // console.log(cm.getCursor());//获取光标的方法
+      // console.log(cm.getCursor()); //获取光标的方法
     });
   },
 };
