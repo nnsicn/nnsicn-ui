@@ -1,0 +1,40 @@
+#app {
+    .el-aside {
+        .el-scrollbar {
+            height: 100%;
+
+            .el-scrollbar__wrap {
+                overflow-x: hidden;
+
+                .el-menu {
+                    background-color: $menuBg;
+                    border: none;
+                    height: 100%;
+                    width: 100% !important;
+
+                    a {
+                        text-decoration: none;
+
+                        span {
+                            color: $menuText;
+
+                        }
+                    }
+
+                    .el-submenu__title {
+                        span {
+                            color: $menuText !important;
+                        }
+                    }
+                }
+
+                .el-meni.is-opened {
+                    .router-link-active {
+                        background-color: $red;
+                    }
+                }
+            }
+        }
+
+    }
+}

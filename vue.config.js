@@ -1,4 +1,5 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
+const path = require("path")
 /**
  * detail
  * https://cli.vuejs.org/config/#publicpath

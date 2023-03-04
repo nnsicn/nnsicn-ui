@@ -53,9 +53,7 @@ export default {
       this.options.mode = val;
     },
     run(){
-      this.code = "let a = 10"
-      let res = new Function(this.code)
-      this.$refs.code.runJS()
+      new Function(this.code)
     }
   },
 };

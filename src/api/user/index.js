@@ -1,9 +1,10 @@
 import request from "@/utils/request"
 
-export function getInfo() {
+export function getInfo(data) {
     return request({
         url: '/getInfo',
-        method: 'post'
+        method: 'post',
+        data
       })
 }
 

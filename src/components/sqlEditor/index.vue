@@ -38,15 +38,15 @@ export default {
         }
       },
     },
-    value: {
-      handler(n) {
-        if (this.codeMirror) {
-          let { ch, line } = this.codeMirror.getCursor();
-          this.codeMirror.setValue(n);
-          this.codeMirror.setCursor(line, ch);
-        }
-      },
-    },
+    // value: {
+    //   handler(n) {
+    //     if (this.codeMirror) {
+    //       let { ch, line } = this.codeMirror.getCursor();
+    //       this.codeMirror.setValue(n);
+    //       this.codeMirror.setCursor(line, ch);
+    //     }
+    //   },
+    // },
   },
   methods: {
     runJS() {},
