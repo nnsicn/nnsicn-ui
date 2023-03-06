@@ -62,10 +62,8 @@ export default {
 <style lang="scss">
 .code-mirror {
   display: flex;
-  padding: 20px 20px 20px 0;
   width: 100%;
   height: 100%;
-  background-color: #e7eaef;
   .left-form {
     padding: 0 16px;
     width: 300px;

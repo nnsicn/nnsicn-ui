@@ -4,6 +4,7 @@
       :background-color="variables.menuBg"
       :text-color="variables.menuText"
       :active-text-color="variables.menuActiveText"
+      class="scollbarMenu"
     >
       <side-bar-item
         v-for="route in asyncRoutes"

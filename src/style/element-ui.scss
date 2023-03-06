@@ -1,8 +1,22 @@
-.el-form {
-    .el-form-item {
-        .el-form-item__label {
-            line-height: 25px;
-            padding-left: 3px;
+#app{
+    .el-form {
+        .el-form-item {
+            .el-form-item__label {
+                line-height: 25px;
+                padding-left: 3px;
+            }
+        }
+    }
+    
+    .el-container .el-main{
+        background-color: #fff;
+        .app-main{
+            background-color: $appMainBg;
+            width: 100%;
+            height: 100%;
+            border-radius: 10px;
+            overflow-x: hidden;
+            padding: 10px;
         }
     }
 }

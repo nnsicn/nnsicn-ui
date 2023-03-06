@@ -1,7 +1,7 @@
 <template>
   <div>
-    <i v-if="icon" :class="icon"></i>
-    <span v-if="title" slot='title'>{{title}}</span>
+    <i v-if="icon" :class="icon" class="icon"></i>
+    <span v-if="title" slot='title' class="title">{{title}}</span>
   </div>
 </template>
 

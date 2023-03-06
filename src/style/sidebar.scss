@@ -5,34 +5,41 @@
 
             .el-scrollbar__wrap {
                 overflow-x: hidden;
+            }
+        }
 
-                .el-menu {
-                    background-color: $menuBg;
-                    border: none;
-                    height: 100%;
-                    width: 100% !important;
+        .el-menu {
+            background-color: $menuBg;
+            border: none;
+            height: 100%;
+            width: 100% !important;
+        }
 
-                    a {
-                        text-decoration: none;
+        .el-menu.scollbarMenu {
+            a.router-link-active li {
+                background-color: #21a1a0;
+            }
 
-                        span {
-                            color: $menuText;
+            .icon,
+            .title {
+                color: $menuText;
+            }
 
-                        }
-                    }
+            .title {
+                padding: 0 5px;
+            }
 
-                    .el-submenu__title {
-                        span {
-                            color: $menuText !important;
-                        }
-                    }
-                }
+            &>div:hover>a>li {
+                background-color: $menuHover;
+            }
 
-                .el-meni.is-opened {
-                    .router-link-active {
-                        background-color: $red;
-                    }
-                }
+            // submenu
+            &>div>li .el-submenu__title:hover {
+                background-color: $subMenuHover;
+            }
+
+            ul.el-menu>div:hover .el-menu-item {
+                background-color: $menuHover;
             }
         }
 
