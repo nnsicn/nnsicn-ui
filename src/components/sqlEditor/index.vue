@@ -28,6 +28,7 @@ export default {
   data() {
     return {
       codeMirror: null,
+      codeText: "",
     };
   },
   watch: {
@@ -38,37 +39,45 @@ export default {
         }
       },
     },
-    // value: {
-    //   handler(n) {
-    //     if (this.codeMirror) {
-    //       let { ch, line } = this.codeMirror.getCursor();
-    //       this.codeMirror.setValue(n);
-    //       this.codeMirror.setCursor(line, ch);
-    //     }
-    //   },
-    // },
+    value: {
+      handler(n, o) {
+        if (n != o && this.codeMirror) {
+          const cursor = this.codeMirror.getCursor();
+          this.codeMirror.setValue(n);
+          this.codeMirror.setCursor(cursor);
+          this.$nextTick(() => {
+            if (
+              this.codeMirror.getValue().at(-1) != ";" &&
+              this.codeMirror.getValue().at(-1) != " " &&
+              this.codeMirror.getValue().length > 0
+            ) {
+              this.codeMirror.showHint({
+                completeSingle: false,
+              });
+            }
+          });
+        }
+      },
+    },
   },
-  methods: {
-    runJS() {},
+  methods:{
+    handler(){
+
+      let res = new Function(`return function(){${this.codeMirror.getValue()} return 123}`)()()
+      console.log(res);
+    }
+    
+    
   },
   mounted() {
     this.codeMirror = new CodeMirror(this.$refs.editor, {
       ...this.options,
       value: this.value,
+      extraKeys: { "Ctrl-S": this.handler },
+      hintOptions: { completeSingle: false },
     });
     this.codeMirror.on("change", (cm) => {
       this.$emit("input", this.codeMirror.getValue());
-      console.log(cm.getValue().at(-1));
-      if (
-        cm.getValue().at(-1) != ";" &&
-        cm.getValue().at(-1) != " " &&
-        cm.getValue().length > 0
-      ) {
-        cm.showHint({
-          completeSingle: false,
-        });
-      }
-      // console.log(cm.getCursor()); //获取光标的方法
     });
   },
 };
