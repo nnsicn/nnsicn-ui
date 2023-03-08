@@ -64,7 +64,6 @@ export default {
     handler(){
 
       let res = new Function(`return function(){${this.codeMirror.getValue()} return 123}`)()()
-      console.log(res);
     }
     
     

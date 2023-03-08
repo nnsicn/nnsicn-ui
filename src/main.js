@@ -4,12 +4,15 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import "@/style/index.scss"
 
+import * as echarts from 'echarts';
+import 'echarts-gl';
+
 import App from './App.vue'
 import './permission'
-
 import store from './store'
 import router from './router'
 
+Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false
