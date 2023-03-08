@@ -30,7 +30,7 @@ const actions = {
           }
         })
         .catch(err => {
-          console.log(err.message);
+          reject(err.message)
         });
     });
   },
