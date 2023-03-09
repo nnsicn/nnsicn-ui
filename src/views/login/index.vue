@@ -1,12 +1,12 @@
 <template>
   <div class="login_box">
     <div class="login_container">
-      <el-form :model="loginForm" ref="form" class="login_form">
+      <el-form :model="loginForm" :rules="rules" ref="form" class="login_form">
         <el-form-item label="账号" prop="name">
           <el-input type="text" v-model="loginForm.name"></el-input>
         </el-form-item>
         <el-form-item label="密码" prop="passWord">
-          <el-input type="text" v-model="loginForm.password"></el-input>
+          <el-input type="text" v-model="loginForm.password" @keyup.enter.native="handleLogin"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="handleLogin">登录</el-button>
@@ -27,6 +27,10 @@ export default {
       loginForm: {
         name: "",
         password: "",
+      },
+      rules: {
+        name: [{ required: true }],
+        password: [{ required: true }],
       },
       option: {
         backgroundColor: "#000",
@@ -52,15 +56,17 @@ export default {
   },
   methods: {
     handleLogin() {
-      // login()
-      this.$store
-        .dispatch("user/login", this.loginForm)
-        .then((res) => {
-          this.$router.push("/");
-        })
-        .catch((err) => {
-          this.$message.error(err); //登录失败提示错误
-        });
+      this.$refs.form.validate((valid) => {
+        if (!valid) return;
+        this.$store
+          .dispatch("user/login", this.loginForm)
+          .then((res) => {
+            this.$router.push("/");
+          })
+          .catch((err) => {
+            this.$message.error(err); //登录失败提示错误
+          });
+      });
     },
   },
   mounted() {
