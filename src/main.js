@@ -3,7 +3,7 @@ import Vue from 'vue'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import "@/style/index.scss"
-
+import "./register"; //register components
 import * as echarts from 'echarts';
 import 'echarts-gl';
 
@@ -13,6 +13,23 @@ import store from './store'
 import router from './router'
 
 Vue.prototype.$echarts = echarts
+Vue.prototype.$dialog = {
+  open(component, arg) {
+    return new Promise((resolve, reject) => {
+      let dialog = Vue.extend(component);
+      let vm = new dialog({
+        // el: document.createElement("div"),
+        // router,
+        // store,
+        // eventBus: new Vue(),
+      });
+      vm.$mount(document.createElement("div"))//挂载该实例
+      vm.opendialog()
+    })
+
+  }
+}
+// Vue.prototype.$openDialog = function (component, arg) { return open(component, arg) }
 Vue.use(ElementUI);
 
 Vue.config.productionTip = false

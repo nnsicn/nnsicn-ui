@@ -47,7 +47,7 @@ export default {
   },
   methods: {
     handlerEdit(row) {
-      console.log(row);
+      this.$dialog.open(dialog,this.search)
       return
       getMenuList({
         menuId: "1",
