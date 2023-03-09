@@ -27,7 +27,6 @@ export const constantRoutes = [
   {
     path: "/codemirror",
     component: Layout,
-    redirect: "/codemirror/index",
     meta: { title: "CodeMirror", icon: "el-icon-warning-outline" },
     children: [
       {
@@ -41,7 +40,6 @@ export const constantRoutes = [
   {
     path: "/system",
     component: Layout,
-    redirect: "/system/page",
     name: "system",
     children: [
       {
@@ -81,7 +79,6 @@ export const asyncRoutes = [
   {
     path: "/system",
     component: Layout,
-    redirect: "/system/page",
     name: "system",
     meta: { title: "System",icon:"el-icon-info" },
     children: [
@@ -111,7 +108,6 @@ export const asyncRoutes = [
   {
     path: "/codemirror",
     component: Layout,
-    redirect: "/codemirror/index",
     meta: { title: "CodeMirror", icon: "el-icon-warning-outline" },
     children: [
       {

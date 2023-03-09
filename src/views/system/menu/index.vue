@@ -14,6 +14,9 @@
         <!-- eslint-disable-next-line --><!--这行注释跳过下行代码检查-->
         <template slot="header" slot-scope="scope">
           <el-input v-model="search" size="mini" placeholder="输入关键字搜索" />
+          <el-button type="text" @click="handleEdit">
+            <i class="el-icon-plus"></i>
+          </el-button>
         </template>
         <template slot-scope="scope">
           <el-button
@@ -21,13 +24,14 @@
             icon="el-icon-edit"
             circle
             size="mini"
-            @click="handlerEdit(scope.row)"
+            @click="handleEdit(scope.row)"
           ></el-button>
           <el-button
             type="danger"
             icon="el-icon-delete"
             circle
             size="mini"
+            @click="handleDelete"
           ></el-button>
         </template>
       </el-table-column>
@@ -37,18 +41,30 @@
 
 <script>
 import { getMenuList } from "@/api/system/menu.js";
+import dialog from "./menuDialog.vue";
 export default {
   name: "Menu",
   data() {
     return {
-      tableData: this.init(),
+      tableData: [
+        {
+          path:"DashBoard",
+          component:"@/views/dashBoard/index.vue",
+          hidden:false,
+          meta:{title:"DashBoard",icon:""}
+        }
+      ],
       search: "",
     };
   },
   methods: {
-    handlerEdit(row) {
-      this.$dialog.open(dialog,this.search)
-      return
+    handleDelete(){},
+    handleEdit(row) {
+      this.$openDialog(dialog, this.search).then((res) => {
+        // 调用add菜单接口或update菜单接口
+        // 调用获取菜单功能并整理数据
+      });
+      return;
       getMenuList({
         menuId: "1",
         component: "views/dashBoard/index.vue",
@@ -59,37 +75,7 @@ export default {
       });
     },
     init() {
-      return [
-        {
-          path: "/documentation",
-          component: "layout/Layout",
-          children: [
-            {
-              path: "index",
-              component: "views/documentation/index",
-              name: "Documentation",
-              meta: {
-                title: "Documentation",
-                icon: "documentation",
-                affix: true,
-              },
-            },
-          ],
-        },
-        {
-          path: "/guide",
-          component: "layout/Layout",
-          redirect: "/guide/index",
-          children: [
-            {
-              path: "index",
-              component: "views/guide/index",
-              name: "Guide",
-              meta: { title: "Guide", icon: "guide", noCache: true },
-            },
-          ],
-        },
-      ];
+      return [];
     },
   },
 };
