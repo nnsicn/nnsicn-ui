@@ -56,7 +56,7 @@ export const constantRoutes = [
       },
       {
         path: "role",
-        component: () => import("@/views/system/menu"),
+        component: () => import("@/views/system/menu/index.vue"),
         name: "MenuSystem",
       },
     ],
@@ -101,7 +101,7 @@ export const asyncRoutes = [
       },
       {
         path: "role",
-        component: () => import("@/views/system/menu"),
+        component: () => import("@/views/system/menu/index.vue"),
         meta: { title: "Menu" },
         hidden:false,
         name: "menuSystem",
