@@ -85,15 +85,6 @@ export default {
         })
         // 调用获取菜单功能并整理数据
       });
-      return;
-      getMenuList({
-        menuId: "1",
-        component: "views/dashBoard/index.vue",
-        parent: null,
-        menuName: "dashBoard",
-      }).then((res) => {
-        console.log(res);
-      });
     },
     init() {
       return [];
