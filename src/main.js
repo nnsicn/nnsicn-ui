@@ -22,7 +22,7 @@ function open(component, arg) {
       // store,
       // eventBus: new Vue(),
     });
-    vm.open().then(
+    vm.open(arg).then(
       res => {
         resolve(res);
       },

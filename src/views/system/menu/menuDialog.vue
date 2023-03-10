@@ -7,6 +7,9 @@
       <el-form-item label="路由" prop="component">
         <el-input v-model="form.component"></el-input>
       </el-form-item>
+      <el-form-item label="隐藏" prop="hidden">
+        <el-checkbox v-model="form.hidden"></el-checkbox>
+      </el-form-item>
     </el-form>
     <slot slot="footer">
       <el-button @click="cancel">取消</el-button>
@@ -20,14 +23,23 @@ export default {
   data() {
     return {
       form: {
+        menuId:null,
+        parentId:null,
+        path:"",
         component:"",
-        meta:{title:""}
+        hidden:false,
+        meta:{
+          title:"",
+          icon:"",
+          sort:null
+        }
       },
       rules: {},
     };
   },
   methods: {
-    open() {
+    open(form) {
+      this.form = form;
       return this.$refs.dialog.open();
     },
     cancel() {
